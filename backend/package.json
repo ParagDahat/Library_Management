@@ -7,6 +7,7 @@
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "express-fileupload": "^1.5.1",
+    "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.13.0",
     "node-cron": "^3.0.3",
     "nodemailer": "^6.10.0"
@@ -15,7 +16,6 @@
   "version": "1.0.0",
   "main": "index.js",
   "type": "module",
-  "devDependencies": {},
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js"
