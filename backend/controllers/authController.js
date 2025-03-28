@@ -16,7 +16,7 @@ export const register = catchAsyncErrors(async (req, res, next) => {
         if(isUserRegistered){
             return next(new ErrorHandler("User already exists.", 400));
         }
-        const registrationAttemptsByUser = await User.findOne({ email,accountVerified: false });
+        const registrationAttemptsByUser = await User.find({ email,accountVerified: false });
         if(registrationAttemptsByUser.length >= 5){
             return next(new ErrorHandler("You have reached the maximum number of registration attempts. Please contact support.", 400));
         };
@@ -32,8 +32,10 @@ export const register = catchAsyncErrors(async (req, res, next) => {
             email,
             password: hashedPassword,
         });
+        // console.log(user);
 
         const verificationCode = await user.generateVerificationCode();
+        // console.log(verificationCode);
         await user.save();
         sendVerificationCode(verificationCode, email , res);
 
