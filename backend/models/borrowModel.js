@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 
 const borrowSchema = new mongoose.Schema({
     user : {
+        id:{
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
         required: true,
@@ -14,6 +15,7 @@ const borrowSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+},
     price : {
         type: Number,
         required: true,
@@ -33,7 +35,7 @@ const borrowSchema = new mongoose.Schema({
     },
     returnDate : {
         type: Date,
-        required: true,
+        default : null,
     },
     fine : {
         type: Number,
